@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxwptiva8bnis"]
+
+[ext_resource type="PackedScene" uid="uid://by7th7037lc0x" path="res://src/game_objects/LineGround/line_ground.tscn" id="1_errlg"]
+[ext_resource type="Script" uid="uid://cxjtqg6r2chpq" path="res://src/game_objects/QuadrilateralPolygon2D/quadrilateral_polygon_2d.gd" id="2_ys0to"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys0to"]
+size = Vector2(16, 32)
+
+[node name="Test" type="Node2D"]
+
+[node name="LineGround" parent="." instance=ExtResource("1_errlg")]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_ys0to")
+
+[node name="Polygon2D" type="Polygon2D" parent="Player"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
+script = ExtResource("2_ys0to")
+size = Vector2(16, 32)
+centered = true
