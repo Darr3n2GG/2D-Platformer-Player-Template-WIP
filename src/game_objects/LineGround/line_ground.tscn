@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by7th7037lc0x"]
 
-[ext_resource type="Script" uid="uid://c2im6tkbaxtxo" path="res://src/objects/platforms/LineGround/line_ground.gd" id="1_impjp"]
+[ext_resource type="Script" uid="uid://c2im6tkbaxtxo" path="res://src/game_objects/LineGround/line_ground.gd" id="1_impjp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k7ius"]
 

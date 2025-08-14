@@ -11,9 +11,11 @@ size = Vector2(16, 32)
 [node name="LineGround" parent="." instance=ExtResource("1_errlg")]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(0, -19)
+position = Vector2(0, -34)
+scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2(0, -200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_ys0to")
