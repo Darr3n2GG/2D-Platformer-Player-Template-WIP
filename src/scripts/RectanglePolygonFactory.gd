@@ -1,8 +1,10 @@
-class_name QuadrilateralPolygonFactory extends PolygonFactory
+class_name RectanglePolygonFactory extends PolygonFactory
 
 var size: Vector2
 var start: Vector2
 
+func center_polygon() -> void:
+	start = Vector2.ZERO - (size/2)
 
 func create_polygon() -> PackedVector2Array:
 	polygon = PackedVector2Array([
