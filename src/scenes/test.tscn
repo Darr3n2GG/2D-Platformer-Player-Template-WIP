@@ -23,7 +23,7 @@ position = Vector2(0, -34)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_1wpl3")
 accel_time = 0.1
-accel_type = 2
+accel_type = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -200)
