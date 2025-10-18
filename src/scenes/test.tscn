@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxwptiva8bnis"]
+[gd_scene load_steps=7 format=3 uid="uid://dxwptiva8bnis"]
 
 [ext_resource type="PackedScene" uid="uid://by7th7037lc0x" path="res://src/game_objects/LineGround/line_ground.tscn" id="1_errlg"]
 [ext_resource type="Texture2D" uid="uid://bqmyxh14lp58h" path="res://src/assets/Free-nice-background-HD-1184461877.jpg" id="1_m5uds"]
 [ext_resource type="Script" uid="uid://cyntlb36gsg4x" path="res://src/game_objects/Player/player.gd" id="2_1wpl3"]
 [ext_resource type="Script" uid="uid://cxjtqg6r2chpq" path="res://src/game_objects/RectanglePolygon2D/rectangle_polygon_2d.gd" id="2_ys0to"]
+[ext_resource type="Script" uid="uid://ca0hxgmh7ae0q" path="res://src/scripts/player_camera.gd" id="5_egtcd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5uds"]
 radius = 8.0
@@ -23,11 +24,7 @@ position = Vector2(0, -34)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_1wpl3")
 accel_time = 0.1
-accel_type = 3
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-offset = Vector2(0, -200)
-process_callback = 0
+accel_type = 1
 
 [node name="RectanglePolygon2D" type="Polygon2D" parent="Player"]
 color = Color(0, 0, 0, 1)
@@ -38,3 +35,9 @@ metadata/_custom_type_script = "uid://cxjtqg6r2chpq"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_m5uds")
+
+[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player_node")]
+offset = Vector2(0, -20)
+limit_bottom = 50
+script = ExtResource("5_egtcd")
+player_node = NodePath("../Player")
