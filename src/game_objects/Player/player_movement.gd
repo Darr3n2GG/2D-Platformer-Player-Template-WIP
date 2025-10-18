@@ -3,6 +3,7 @@ class_name PlayerMovement extends Node
 
 # Exportable variables
 var max_speed: float
+var accel_strategy: AccelStrategy
 
 var velocity_x: float
 
@@ -15,11 +16,11 @@ func _ready() -> void:
 	player = get_parent()
 	
 	max_speed = player.max_speed
+	accel_strategy = player.accel_strategy
 
 func _physics_process(delta: float) -> void:
 	handle_input(delta)
 	player.velocity.x = velocity_x
 
-func handle_input(_delta: float) -> void:
-	var acceleration := max_speed
-	velocity_x = move_toward(velocity_x, max_speed * lr_input.get_direction(), acceleration)
+func handle_input(delta: float) -> void:
+	accel_strategy.apply_acceleration(self, lr_input.get_direction(), delta)

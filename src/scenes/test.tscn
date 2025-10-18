@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxwptiva8bnis"]
+[gd_scene load_steps=10 format=3 uid="uid://dxwptiva8bnis"]
 
 [ext_resource type="PackedScene" uid="uid://by7th7037lc0x" path="res://src/game_objects/LineGround/line_ground.tscn" id="1_errlg"]
 [ext_resource type="Texture2D" uid="uid://bqmyxh14lp58h" path="res://src/assets/Free-nice-background-HD-1184461877.jpg" id="1_m5uds"]
 [ext_resource type="Script" uid="uid://cyntlb36gsg4x" path="res://src/game_objects/Player/player.gd" id="2_1wpl3"]
 [ext_resource type="Script" uid="uid://cxjtqg6r2chpq" path="res://src/game_objects/RectanglePolygon2D/rectangle_polygon_2d.gd" id="2_ys0to"]
+[ext_resource type="Script" uid="uid://bf4yeyev3prjp" path="res://src/game_objects/Player/ConstAccel.gd" id="4_fen8a"]
 [ext_resource type="Script" uid="uid://ca0hxgmh7ae0q" path="res://src/game_objects/player_camera.gd" id="5_egtcd"]
 [ext_resource type="Script" uid="uid://dypreb14osi0q" path="res://src/game_objects/Player/player_movement.gd" id="5_n5vox"]
+
+[sub_resource type="Resource" id="Resource_pixv2"]
+script = ExtResource("4_fen8a")
+metadata/_custom_type_script = "uid://bf4yeyev3prjp"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5uds"]
 radius = 8.0
@@ -24,6 +29,7 @@ texture = ExtResource("1_m5uds")
 position = Vector2(0, -34)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_1wpl3")
+accel_strategy = SubResource("Resource_pixv2")
 
 [node name="RectanglePolygon2D" type="Polygon2D" parent="Player"]
 color = Color(0, 0, 0, 1)

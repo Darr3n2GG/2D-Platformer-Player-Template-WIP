@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 
 @export var max_speed: float = 500.0
+@export var accel_strategy: AccelStrategy
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
