@@ -7,21 +7,22 @@ class_name ConstAccel extends AccelStrategy
 var final_time: float
 
 
-func apply_acceleration(movement: PlayerMovement, direction: float, delta: float) -> void:
-	final_time = get_final_time(movement, direction)
+func apply_acceleration(movement: PlayerMovement, input: LRInput, delta: float) -> void:
+	final_time = get_final_time(movement.velocity_x, input)
 	
 	var ticks := delta / final_time
-	movement.velocity_x = move_toward(movement.velocity_x, movement.max_speed * direction, movement.max_speed * ticks)
+	var acceleration = movement.max_speed * ticks
+	movement.velocity_x = move_toward(movement.velocity_x, movement.max_speed * input.get_direction(), acceleration)
 	
-func get_final_time(movement: PlayerMovement, direction: float) -> float:	
-	if movement.lr_input.just_pressed():
-		var is_turning = movement.velocity_x != 0.0 and sign(movement.velocity_x) != direction
+func get_final_time(velocity_x: float, input: LRInput) -> float:	
+	if input.just_pressed():
+		var is_turning = velocity_x != 0.0 and sign(velocity_x) != input.get_direction()
 		if is_turning:
 			return turn_time
 		else:
 			return accel_time
 	
-	elif movement.lr_input.just_released():
+	elif input.just_released():
 		return decel_time
 	
 	return final_time
