@@ -7,7 +7,7 @@ class_name ConstAccel extends AccelStrategy
 var final_time: float
 
 
-func apply_acceleration(movement: PlayerMovement, input: LRInput, delta: float) -> void:
+func apply_acceleration(movement, input: LRInput, delta: float) -> void:
 	final_time = get_final_time(movement.velocity_x, input)
 	
 	var ticks := delta / final_time

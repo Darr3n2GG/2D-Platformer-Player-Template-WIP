@@ -1,0 +1,59 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgsqf48tab66p"]
+
+[ext_resource type="Script" uid="uid://cyntlb36gsg4x" path="res://src/game_objects/Player/player.gd" id="1_row8d"]
+[ext_resource type="Script" uid="uid://bf4yeyev3prjp" path="res://src/game_objects/Player/Movement/ConstAccel.gd" id="2_3pq2h"]
+[ext_resource type="Script" uid="uid://cxjtqg6r2chpq" path="res://src/game_objects/RectanglePolygon2D/rectangle_polygon_2d.gd" id="3_mp16b"]
+[ext_resource type="Script" uid="uid://b1qem1wajd5rq" path="res://src/game_objects/StateMachine/state_machine.gd" id="5_tuiwj"]
+[ext_resource type="Script" uid="uid://cmnm45vvh7pxu" path="res://src/game_objects/Player/Movement/states/idle.gd" id="6_i3pxp"]
+[ext_resource type="Script" uid="uid://w4crsookg4ku" path="res://src/game_objects/Player/Movement/states/accel.gd" id="7_3kr8o"]
+[ext_resource type="Script" uid="uid://dfobspvfwoe6i" path="res://src/game_objects/Player/Movement/states/decel.gd" id="8_row8d"]
+[ext_resource type="Script" uid="uid://b7ew0hofsada4" path="res://src/game_objects/Player/Movement/states/turn.gd" id="9_3pq2h"]
+[ext_resource type="Script" uid="uid://cvvgihjqk6d42" path="res://src/game_objects/Player/Movement/states/max.gd" id="10_mp16b"]
+
+[sub_resource type="Resource" id="Resource_fen8a"]
+script = ExtResource("2_3pq2h")
+metadata/_custom_type_script = "uid://bf4yeyev3prjp"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5uds"]
+radius = 8.0
+height = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_row8d")
+accel_strategy = SubResource("Resource_fen8a")
+
+[node name="RectanglePolygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
+script = ExtResource("3_mp16b")
+size = Vector2(16, 32)
+metadata/_custom_type_script = "uid://cxjtqg6r2chpq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_m5uds")
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_tuiwj")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://b1qem1wajd5rq"
+
+[node name="Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_i3pxp")
+metadata/_custom_type_script = "uid://blxbdsp6g8qh1"
+
+[node name="Accel" type="Node" parent="MovementStateMachine"]
+script = ExtResource("7_3kr8o")
+metadata/_custom_type_script = "uid://blxbdsp6g8qh1"
+
+[node name="Decel" type="Node" parent="MovementStateMachine"]
+script = ExtResource("8_row8d")
+metadata/_custom_type_script = "uid://blxbdsp6g8qh1"
+
+[node name="Turn" type="Node" parent="MovementStateMachine"]
+script = ExtResource("9_3pq2h")
+metadata/_custom_type_script = "uid://blxbdsp6g8qh1"
+
+[node name="Max" type="Node" parent="MovementStateMachine"]
+script = ExtResource("10_mp16b")
+metadata/_custom_type_script = "uid://blxbdsp6g8qh1"

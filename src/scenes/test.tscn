@@ -1,20 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxwptiva8bnis"]
+[gd_scene load_steps=5 format=3 uid="uid://dxwptiva8bnis"]
 
 [ext_resource type="PackedScene" uid="uid://by7th7037lc0x" path="res://src/game_objects/LineGround/line_ground.tscn" id="1_errlg"]
 [ext_resource type="Texture2D" uid="uid://bqmyxh14lp58h" path="res://src/assets/Free-nice-background-HD-1184461877.jpg" id="1_m5uds"]
-[ext_resource type="Script" uid="uid://cyntlb36gsg4x" path="res://src/game_objects/Player/player.gd" id="2_1wpl3"]
-[ext_resource type="Script" uid="uid://cxjtqg6r2chpq" path="res://src/game_objects/RectanglePolygon2D/rectangle_polygon_2d.gd" id="2_ys0to"]
-[ext_resource type="Script" uid="uid://bf4yeyev3prjp" path="res://src/game_objects/Player/ConstAccel.gd" id="4_fen8a"]
+[ext_resource type="PackedScene" uid="uid://bgsqf48tab66p" path="res://src/game_objects/Player/player.tscn" id="3_m5uds"]
 [ext_resource type="Script" uid="uid://ca0hxgmh7ae0q" path="res://src/game_objects/player_camera.gd" id="5_egtcd"]
-[ext_resource type="Script" uid="uid://dypreb14osi0q" path="res://src/game_objects/Player/player_movement.gd" id="5_n5vox"]
-
-[sub_resource type="Resource" id="Resource_fen8a"]
-script = ExtResource("4_fen8a")
-metadata/_custom_type_script = "uid://bf4yeyev3prjp"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5uds"]
-radius = 8.0
-height = 32.0
 
 [node name="Test" type="Node2D"]
 
@@ -25,25 +14,9 @@ texture = ExtResource("1_m5uds")
 
 [node name="LineGround" parent="." instance=ExtResource("1_errlg")]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_m5uds")]
 position = Vector2(0, -34)
-scale = Vector2(1.5, 1.5)
-script = ExtResource("2_1wpl3")
-accel_strategy = SubResource("Resource_fen8a")
-
-[node name="RectanglePolygon2D" type="Polygon2D" parent="Player"]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
-script = ExtResource("2_ys0to")
-size = Vector2(16, 32)
-metadata/_custom_type_script = "uid://cxjtqg6r2chpq"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_m5uds")
-
-[node name="PlayerMovement" type="Node" parent="Player"]
-script = ExtResource("5_n5vox")
-metadata/_custom_type_script = "uid://dypreb14osi0q"
+accel_strategy = null
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player_node")]
 offset = Vector2(0, -20)
