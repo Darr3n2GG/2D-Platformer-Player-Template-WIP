@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgsqf48tab66p"]
+[gd_scene load_steps=14 format=3 uid="uid://bgsqf48tab66p"]
 
 [ext_resource type="Script" uid="uid://cyntlb36gsg4x" path="res://src/game_objects/Player/player.gd" id="1_row8d"]
 [ext_resource type="Script" uid="uid://bf4yeyev3prjp" path="res://src/game_objects/Player/Movement/ConstAccel.gd" id="2_3pq2h"]
@@ -10,7 +10,15 @@
 [ext_resource type="Script" uid="uid://b7ew0hofsada4" path="res://src/game_objects/Player/Movement/states/turn.gd" id="9_3pq2h"]
 [ext_resource type="Script" uid="uid://cvvgihjqk6d42" path="res://src/game_objects/Player/Movement/states/max.gd" id="10_mp16b"]
 
-[sub_resource type="Resource" id="Resource_fen8a"]
+[sub_resource type="Resource" id="Resource_3pq2h"]
+script = ExtResource("2_3pq2h")
+metadata/_custom_type_script = "uid://bf4yeyev3prjp"
+
+[sub_resource type="Resource" id="Resource_mp16b"]
+script = ExtResource("2_3pq2h")
+metadata/_custom_type_script = "uid://bf4yeyev3prjp"
+
+[sub_resource type="Resource" id="Resource_0uhvp"]
 script = ExtResource("2_3pq2h")
 metadata/_custom_type_script = "uid://bf4yeyev3prjp"
 
@@ -21,7 +29,9 @@ height = 32.0
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_row8d")
-accel_strategy = SubResource("Resource_fen8a")
+accel_strategy = SubResource("Resource_3pq2h")
+decel_strategy = SubResource("Resource_mp16b")
+turn_strategy = SubResource("Resource_0uhvp")
 
 [node name="RectanglePolygon2D" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 1)

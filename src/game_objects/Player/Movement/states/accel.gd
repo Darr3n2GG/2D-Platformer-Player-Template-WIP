@@ -1,13 +1,10 @@
 extends PlayerMovementState
 
 
-
 func physics_update(delta: float) -> void:
-	var ticks := delta / 0.1
-	var acceleration = player.max_speed * ticks
-	player.velocity.x = move_toward(player.velocity.x, player.max_speed * input.get_direction(), acceleration)
+	player.accel_strategy.apply_acceleration(player, input, delta)
 	
-	if is_equal_approx(player.velocity.x, player.max_speed):
+	if is_equal_approx(player.velocity.x, player.max_speed * input.get_direction()) and input.get_direction():
 		finished.emit(MAX)
 	elif not input.get_direction():
 		finished.emit(DECEL)
