@@ -20,7 +20,7 @@ texture = ExtResource("1_m5uds")
 [node name="LineGround" parent="." instance=ExtResource("1_errlg")]
 
 [node name="Player" parent="." instance=ExtResource("3_m5uds")]
-position = Vector2(0, -34)
+position = Vector2(0, -77)
 turn_strategy = SubResource("Resource_egtcd")
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player_node")]

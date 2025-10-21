@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgsqf48tab66p"]
+[gd_scene load_steps=15 format=3 uid="uid://bgsqf48tab66p"]
 
 [ext_resource type="Script" uid="uid://cyntlb36gsg4x" path="res://src/game_objects/Player/player.gd" id="1_row8d"]
 [ext_resource type="Script" uid="uid://bf4yeyev3prjp" path="res://src/game_objects/Player/Movement/ConstAccel.gd" id="2_3pq2h"]
+[ext_resource type="Texture2D" uid="uid://dvl28rv8woupg" path="res://src/assets/gerald.png" id="3_0uhvp"]
 [ext_resource type="Script" uid="uid://cxjtqg6r2chpq" path="res://src/game_objects/RectanglePolygon2D/rectangle_polygon_2d.gd" id="3_mp16b"]
 [ext_resource type="Script" uid="uid://b1qem1wajd5rq" path="res://src/game_objects/StateMachine/state_machine.gd" id="5_tuiwj"]
 [ext_resource type="Script" uid="uid://cmnm45vvh7pxu" path="res://src/game_objects/Player/Movement/states/idle.gd" id="6_i3pxp"]
@@ -23,8 +24,8 @@ script = ExtResource("2_3pq2h")
 metadata/_custom_type_script = "uid://bf4yeyev3prjp"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5uds"]
-radius = 8.0
-height = 32.0
+radius = 15.0
+height = 50.0
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -33,7 +34,13 @@ accel_strategy = SubResource("Resource_3pq2h")
 decel_strategy = SubResource("Resource_mp16b")
 turn_strategy = SubResource("Resource_0uhvp")
 
+[node name="Gerald" type="Sprite2D" parent="."]
+position = Vector2(0, -5.333334)
+scale = Vector2(0.4706131, 0.4706131)
+texture = ExtResource("3_0uhvp")
+
 [node name="RectanglePolygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
 script = ExtResource("3_mp16b")
