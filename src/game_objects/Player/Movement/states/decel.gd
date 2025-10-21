@@ -1,7 +1,6 @@
 extends PlayerMovementState
 
 
-
 func physics_update(delta: float) -> void:
 	player.decel_strategy.apply_acceleration(player, input, delta)
 	

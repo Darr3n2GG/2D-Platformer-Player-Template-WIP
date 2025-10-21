@@ -1,14 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxwptiva8bnis"]
+[gd_scene load_steps=9 format=3 uid="uid://dxwptiva8bnis"]
 
 [ext_resource type="PackedScene" uid="uid://by7th7037lc0x" path="res://src/game_objects/LineGround/line_ground.tscn" id="1_errlg"]
 [ext_resource type="Texture2D" uid="uid://bqmyxh14lp58h" path="res://src/assets/Free-nice-background-HD-1184461877.jpg" id="1_m5uds"]
 [ext_resource type="PackedScene" uid="uid://bgsqf48tab66p" path="res://src/game_objects/Player/player.tscn" id="3_m5uds"]
-[ext_resource type="Script" uid="uid://dif0x5f71p4so" path="res://src/game_objects/Player/Movement/ZeroAccel.gd" id="4_egtcd"]
+[ext_resource type="Script" uid="uid://mgemc1k8cl8" path="res://src/game_objects/Player/Movement/LinearAccel.gd" id="4_egtcd"]
 [ext_resource type="Script" uid="uid://ca0hxgmh7ae0q" path="res://src/game_objects/player_camera.gd" id="5_egtcd"]
 
-[sub_resource type="Resource" id="Resource_egtcd"]
+[sub_resource type="Resource" id="Resource_n5vox"]
 script = ExtResource("4_egtcd")
-metadata/_custom_type_script = "uid://dif0x5f71p4so"
+accel_time = 0.1
+metadata/_custom_type_script = "uid://mgemc1k8cl8"
+
+[sub_resource type="Resource" id="Resource_fen8a"]
+script = ExtResource("4_egtcd")
+accel_time = 0.1
+metadata/_custom_type_script = "uid://mgemc1k8cl8"
+
+[sub_resource type="Resource" id="Resource_pixv2"]
+script = ExtResource("4_egtcd")
+accel_time = 0.1
+metadata/_custom_type_script = "uid://mgemc1k8cl8"
 
 [node name="Test" type="Node2D"]
 
@@ -21,7 +32,9 @@ texture = ExtResource("1_m5uds")
 
 [node name="Player" parent="." instance=ExtResource("3_m5uds")]
 position = Vector2(0, -77)
-turn_strategy = SubResource("Resource_egtcd")
+accel_strategy = SubResource("Resource_n5vox")
+decel_strategy = SubResource("Resource_fen8a")
+turn_strategy = SubResource("Resource_pixv2")
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player_node")]
 offset = Vector2(0, -20)

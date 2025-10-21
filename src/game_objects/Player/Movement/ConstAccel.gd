@@ -5,6 +5,6 @@ class_name ConstAccel extends AccelStrategy
 
 
 func apply_acceleration(player: CharacterBody2D, input: LRInput, delta: float) -> void:	
-	var ticks := delta / accel_time
-	var acceleration = player.max_speed * ticks	
+	var ticks := accel_time / delta
+	var acceleration = player.max_speed * (1 / ticks)
 	player.velocity.x = move_toward(player.velocity.x, player.max_speed * input.get_direction(), acceleration)
