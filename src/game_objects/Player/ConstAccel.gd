@@ -16,7 +16,7 @@ func apply_acceleration(movement: PlayerMovement, input: LRInput, delta: float) 
 	
 func get_final_time(velocity_x: float, input: LRInput) -> float:	
 	if input.just_pressed():
-		var is_turning = velocity_x != 0.0 and sign(velocity_x) != input.get_direction()
+		var is_turning = velocity_x != 0.0 and sign(velocity_x) != sign(input.get_direction())
 		if is_turning:
 			return turn_time
 		else:
