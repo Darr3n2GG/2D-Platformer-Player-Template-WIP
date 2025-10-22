@@ -14,13 +14,18 @@ func apply_acceleration(player: Player, direction: float, delta: float) -> void:
 	var acceleration = player.max_speed * (1 / ticks)
 	player.velocity.x = move_toward(player.velocity.x, player.max_speed * direction, acceleration)
 	
-func set_final_time(velocity_x: float, direction: float) -> void:	
-	if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
-		var is_turning = velocity_x != 0.0 and sign(velocity_x) != sign(direction)
-		if is_turning:
+func set_final_time(velocity_x: float, direction: float) -> void:
+	if just_pressed() or just_released():
+		var is_turning = sign(velocity_x) != sign(direction) and velocity_x != 0.0
+		if direction == 0.0:
+			final_time = decel_time
+		elif is_turning:
 			final_time = turn_time
 		else:
 			final_time = accel_time
-	
-	elif Input.is_action_just_released("move_left") or Input.is_action_just_released("move_right"):
-		final_time = decel_time
+		
+func just_pressed() -> bool:
+	return Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right")
+
+func just_released() -> bool:
+	return Input.is_action_just_released("move_left") or Input.is_action_just_released("move_right")
