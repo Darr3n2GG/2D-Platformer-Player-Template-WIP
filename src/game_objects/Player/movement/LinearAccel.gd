@@ -4,5 +4,5 @@ class_name LinearAccel extends AccelStrategy
 
 
 
-func apply_acceleration(movement: PlayerMovement, input: LRInput, delta: float) -> void:
+func apply_acceleration(player: Player, direction: float, delta: float) -> void:
 	pass

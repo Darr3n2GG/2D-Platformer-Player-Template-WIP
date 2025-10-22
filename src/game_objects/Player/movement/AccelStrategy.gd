@@ -2,4 +2,4 @@
 class_name AccelStrategy extends Resource
 
 
-@abstract func apply_acceleration(movement: PlayerMovement, input: LRInput, delta: float) -> void
+@abstract func apply_acceleration(player: Player, direction: float, delta: float) -> void
