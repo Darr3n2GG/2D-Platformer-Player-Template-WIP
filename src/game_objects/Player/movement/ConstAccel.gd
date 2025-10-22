@@ -8,21 +8,19 @@ var final_time: float
 
 
 func apply_acceleration(movement: PlayerMovement, input: LRInput, delta: float) -> void:
-	final_time = get_final_time(movement.velocity_x, input)
+	set_final_time(movement.velocity_x, input)
+	var ticks := final_time / delta
 	
-	var ticks := delta / final_time
-	var acceleration = movement.max_speed * ticks
+	var acceleration = movement.max_speed * (1 / ticks)
 	movement.velocity_x = move_toward(movement.velocity_x, movement.max_speed * input.get_direction(), acceleration)
 	
-func get_final_time(velocity_x: float, input: LRInput) -> float:	
+func set_final_time(velocity_x: float, input: LRInput) -> void:	
 	if input.just_pressed():
 		var is_turning = velocity_x != 0.0 and sign(velocity_x) != sign(input.get_direction())
 		if is_turning:
-			return turn_time
+			final_time = turn_time
 		else:
-			return accel_time
+			final_time = accel_time
 	
 	elif input.just_released():
-		return decel_time
-	
-	return final_time
+		final_time = decel_time

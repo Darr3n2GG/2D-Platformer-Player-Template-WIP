@@ -7,6 +7,7 @@ var max_speed: float
 var accel_strategy: AccelStrategy
 
 var velocity_x: float
+
 var enabled: bool = true
 
 var player: CharacterBody2D
