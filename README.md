@@ -4,11 +4,7 @@
 - hollow knight-like player camera (lerp and direction based camera)
 
 ## What I am planning to add:
-- Custom jump
-- Jump mechanics
-  - coyote jump
-  - jump buffer
-  - jump count (double jump)
+[Check out the feature tracker](https://github.com/Darr3n2GG/2D-Platformer-Player-Template-WIP/issues/2)
 
 ## Usage
 The player node is in the game objects folder. After importing to godot, you can configure the player to fit the feel of your game in the editor.
