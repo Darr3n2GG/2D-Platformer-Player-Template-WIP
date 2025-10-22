@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgsqf48tab66p"]
+
+[ext_resource type="Script" uid="uid://cyntlb36gsg4x" path="res://src/game_objects/Player/player.gd" id="1_ds8jj"]
+[ext_resource type="Script" uid="uid://bf4yeyev3prjp" path="res://src/game_objects/Player/movement/ConstAccel.gd" id="2_dvs4v"]
+[ext_resource type="Texture2D" uid="uid://dvl28rv8woupg" path="res://src/assets/gerald.png" id="3_3a2m3"]
+[ext_resource type="Script" uid="uid://cxjtqg6r2chpq" path="res://src/game_objects/RectanglePolygon2D/rectangle_polygon_2d.gd" id="4_row8d"]
+
+[sub_resource type="Resource" id="Resource_fen8a"]
+script = ExtResource("2_dvs4v")
+turn_time = 0.0
+metadata/_custom_type_script = "uid://bf4yeyev3prjp"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5uds"]
+radius = 8.0
+height = 42.666668
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_ds8jj")
+accel_strategy = SubResource("Resource_fen8a")
+
+[node name="Gerald" type="Sprite2D" parent="."]
+position = Vector2(-2.3841858e-07, -5.9999995)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_3a2m3")
+
+[node name="RectanglePolygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
+script = ExtResource("4_row8d")
+size = Vector2(16, 32)
+metadata/_custom_type_script = "uid://cxjtqg6r2chpq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_m5uds")

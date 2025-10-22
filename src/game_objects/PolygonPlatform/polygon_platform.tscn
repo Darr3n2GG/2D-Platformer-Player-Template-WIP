@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8x2wpkdto7du"]
+
+[ext_resource type="Script" uid="uid://k7w0ijpig571" path="res://src/objects/PolygonPlatform/polygon_platform.gd" id="1_7estl"]
+
+[node name="PolygonPlatform" type="StaticBody2D"]
+script = ExtResource("1_7estl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
