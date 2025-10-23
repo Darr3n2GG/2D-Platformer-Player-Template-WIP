@@ -12,6 +12,6 @@ The player node is in the game objects folder. After importing to godot, you can
 Note that the camera is not a child of the player. It is a standalone camera that you can configure.
 
 ## Links
-[another config velocity](https://www.desmos.com/calculator/uolujlxkkr)(old)
-[yet another config velocity](https://www.desmos.com/calculator/qb6w0iahwl)(new)
+[another config velocity](https://www.desmos.com/calculator/uolujlxkkr)(old)  
+[yet another config velocity](https://www.desmos.com/calculator/qb6w0iahwl)(new)  
 [hollow knight camera in ue4](https://www.youtube.com/watch?v=w4xM9EWKs3I)
