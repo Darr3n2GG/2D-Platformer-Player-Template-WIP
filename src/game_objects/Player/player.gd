@@ -25,5 +25,6 @@ func handle_movement_input(delta: float) -> void:
 		
 	accel_strategy.apply_acceleration(self, get_direction(), delta)
 	
+	
 func get_direction() -> float:
 	return Input.get_axis("move_left", "move_right")
