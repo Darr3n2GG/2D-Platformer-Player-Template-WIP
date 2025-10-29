@@ -9,7 +9,6 @@
 
 [sub_resource type="Resource" id="Resource_fen8a"]
 script = ExtResource("4_n5vox")
-accel_type = 1
 accel_time = 0.1
 decel_time = 0.1
 turn_time = 0.1
@@ -26,6 +25,7 @@ texture = ExtResource("1_m5uds")
 
 [node name="Player" parent="." instance=ExtResource("3_m5uds")]
 position = Vector2(0, -34)
+max_speed = 1000.0
 accel_strategy = SubResource("Resource_fen8a")
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player_node")]
