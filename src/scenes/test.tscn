@@ -9,7 +9,6 @@
 
 [sub_resource type="Resource" id="Resource_fen8a"]
 script = ExtResource("4_n5vox")
-accel_type = 1
 accel_time = 0.1
 decel_time = 0.1
 turn_time = 0.1
