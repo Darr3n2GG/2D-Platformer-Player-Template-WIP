@@ -7,7 +7,6 @@ enum LinearTypes { INCREASING, DECREASING }
 @export var accel_time: float
 @export var decel_time: float
 @export var turn_time: float
-@export var reset_on_wall: bool = true
 
 var active := false
 var elapsed := 0.0
@@ -25,9 +24,7 @@ func _init(_t_accel = 0.0, _t_decel = 0.0, _t_turn = 0.0) -> void:
 
 func apply_acceleration(player: Player, direction: float, delta: float) -> void:
 	var is_released_input := direction == 0 and just_released()
-	# add just on wall
-	var is_on_wall = player.is_on_wall() and reset_on_wall
-	if is_released_input or is_on_wall:
+	if is_released_input:
 		active = false
 		return
 		
