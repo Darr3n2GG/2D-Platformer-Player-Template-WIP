@@ -9,7 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta: float) -> void:
-	handle_movement_input(delta)
+	handle_horizontal_movement(delta)
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -500
@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
-func handle_movement_input(delta: float) -> void:
+func handle_horizontal_movement(delta: float) -> void:
 	if not movement_enabled:
 		return
 		
