@@ -5,6 +5,7 @@ extends StaticBody2D
 	set(value):
 		line_color = value
 		set_line_color(value)
+@export var is_viewport_width : bool = true
 		
 @onready var line_2d: Line2D = $Line2D
 
@@ -12,7 +13,9 @@ extends StaticBody2D
 func _ready() -> void:
 	set_line_color(line_color)
 	if not Engine.is_editor_hint():
-		get_viewport().size_changed.connect(_on_viewport_size_changed)
+		if is_viewport_width:
+			set_width_to_viewport()
+			get_viewport().size_changed.connect(set_width_to_viewport)
 	
 func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
@@ -25,10 +28,9 @@ func set_line_color(color_: Color) -> void:
 		line_2d.default_color = color_
 		
 func set_line_width(width_: float) -> void:
-	line_2d.points[0].x = width_ / 2 * -1
-	line_2d.points[0].x = width_ / 2
-	
+	line_2d.points[0].x = width_ * -1
+	line_2d.points[1].x = width_
 
-func _on_viewport_size_changed() -> void:
+func set_width_to_viewport() -> void:
 	var viewport_width := get_viewport_rect().size.x
 	set_line_width(viewport_width)

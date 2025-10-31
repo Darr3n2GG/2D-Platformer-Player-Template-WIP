@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://7fqqkxsxk0i1"]
+
+[ext_resource type="PackedScene" uid="uid://b8x2wpkdto7du" path="res://src/game_objects/PolygonPlatform/polygon_platform.tscn" id="1_tll3x"]
+[ext_resource type="Script" uid="uid://dbqoketfg4q52" path="res://src/game_objects/RectanglePlatform/rectangle_platform.gd" id="2_gj40d"]
+
+[node name="SquarePlatform" instance=ExtResource("1_tll3x")]
+script = ExtResource("2_gj40d")
+size = Vector2(0, 0)

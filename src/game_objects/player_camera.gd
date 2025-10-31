@@ -42,6 +42,6 @@ func get_direction() -> float:
 	return Input.get_axis("move_left", "move_right")
 
 func just_released_last_input() -> bool:
-	var is_released_last_right := last_horizontal_input == 1 and Input.is_action_just_released("move_right")
-	var is_released_last_left := last_horizontal_input == -1 and Input.is_action_just_released("move_left")
-	return is_released_last_left or is_released_last_right
+	var just_released_last_right := last_horizontal_input == 1 and Input.is_action_just_released("move_right")
+	var just_released_last_left := last_horizontal_input == -1 and Input.is_action_just_released("move_left")
+	return just_released_last_right or just_released_last_left

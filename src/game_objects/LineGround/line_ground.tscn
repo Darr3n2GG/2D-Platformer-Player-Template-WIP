@@ -11,5 +11,5 @@ script = ExtResource("1_impjp")
 shape = SubResource("WorldBoundaryShape2D_k7ius")
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-837831200000, 5, 837831200000, 5)
+points = PackedVector2Array(-1000000000000, 5, 1000000000000, 5)
 default_color = Color(0.64705884, 0.16470589, 0.16470589, 1)

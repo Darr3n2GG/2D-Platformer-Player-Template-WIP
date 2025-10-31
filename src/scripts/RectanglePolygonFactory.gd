@@ -1,10 +1,9 @@
-class_name RectanglePolygonFactory extends PolygonFactory
+class_name RectanglePolygonFactory extends RefCounted
 
 var size: Vector2
 var start: Vector2
+var polygon: PackedVector2Array
 
-func center_polygon() -> void:
-	start = Vector2.ZERO - (size/2)
 
 func create_polygon() -> PackedVector2Array:
 	polygon = PackedVector2Array([
@@ -15,3 +14,5 @@ func create_polygon() -> PackedVector2Array:
 	])
 	return polygon
 		
+func center_polygon() -> void:
+	start = Vector2.ZERO - (size/2)
