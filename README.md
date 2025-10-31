@@ -4,7 +4,7 @@
 - hollow knight-like player camera (lerp and direction based camera)
 - some simple platform templates
 
-## What I am planning to add:
+## What I am planning contains:
 [Check out the feature tracker](https://github.com/Darr3n2GG/2D-Platformer-Player-Template-WIP/issues/2)
 
 ## Usage
