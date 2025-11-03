@@ -3,12 +3,13 @@ class_name Player extends CharacterBody2D
 
 @export var max_speed: float = 500.0
 @export var accel_strategy: AccelStrategy
-@export var jump_strategy: JumpStrategy
-@export var gravity_strategy: GravityStrategy
+@export var vertical_movement_strategy: VerticalMovementStrategy
 
 var movement_enabled: bool = true
 var jump_enabled: bool = true
 var gravity_enabled: bool = true
+
+var is_jumping: bool
 
 
 func _physics_process(delta: float) -> void:
@@ -27,15 +28,13 @@ func handle_jump(delta: float) -> void:
 	if not jump_enabled:
 		return
 	
-	var gravity_data := gravity_strategy.get_data()
-	jump_strategy.apply_jump(self, gravity_data, delta)
+	vertical_movement_strategy.apply_jump(self, Input.is_action_just_pressed("jump"), delta)
 	
 func handle_gravity(delta: float) -> void:
 	if not gravity_enabled:
 		return
 	
-	var jump_data := jump_strategy.get_data()
-	gravity_strategy.apply_gravity(self, jump_data, delta)
+	vertical_movement_strategy.apply_gravity(self, delta)
 		
 	
 func get_direction() -> float:
