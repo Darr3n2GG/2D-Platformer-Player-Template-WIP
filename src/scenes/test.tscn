@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bgsqf48tab66p" path="res://src/game_objects/Player/player.tscn" id="3_m5uds"]
 [ext_resource type="Script" uid="uid://bf4yeyev3prjp" path="res://src/game_objects/Player/acceleration/ConstAccel.gd" id="4_n5vox"]
 [ext_resource type="Script" uid="uid://ca0hxgmh7ae0q" path="res://src/game_objects/player_camera.gd" id="5_egtcd"]
+[ext_resource type="Script" uid="uid://ciiqwvuaw4xwr" path="res://src/game_objects/Player/vertical_movement/VariableVerticalMovement.gd" id="5_fen8a"]
 [ext_resource type="PackedScene" uid="uid://7fqqkxsxk0i1" path="res://src/game_objects/RectanglePlatform/rectangle_platform.tscn" id="5_n5vox"]
-[ext_resource type="Script" uid="uid://bkr4g6455vc2" path="res://src/game_objects/Player/vertical_movement/SimpleVerticalMovement.gd" id="5_pixv2"]
 
 [sub_resource type="Resource" id="Resource_fen8a"]
 script = ExtResource("4_n5vox")
@@ -15,10 +15,11 @@ decel_time = 0.1
 metadata/_custom_type_script = "uid://bf4yeyev3prjp"
 
 [sub_resource type="Resource" id="Resource_pixv2"]
-script = ExtResource("5_pixv2")
-jump_velocity = -500.0
-use_default_gravity = true
-metadata/_custom_type_script = "uid://bkr4g6455vc2"
+script = ExtResource("5_fen8a")
+jump_height = 100.0
+time_to_apex = 0.3
+time_to_fall = 0.25
+metadata/_custom_type_script = "uid://ciiqwvuaw4xwr"
 
 [node name="Test" type="Node2D"]
 
@@ -44,6 +45,11 @@ player_node = NodePath("../Player")
 
 [node name="SquarePlatform" parent="Platforms" instance=ExtResource("5_n5vox")]
 position = Vector2(162, -90)
+size = Vector2(100, 15)
+polygon = PackedVector2Array(-50, 7.5, 50, 7.5, 50, -7.5, -50, -7.5)
+
+[node name="SquarePlatform18" parent="Platforms" instance=ExtResource("5_n5vox")]
+position = Vector2(480, -93)
 size = Vector2(100, 15)
 polygon = PackedVector2Array(-50, 7.5, 50, 7.5, 50, -7.5, -50, -7.5)
 
