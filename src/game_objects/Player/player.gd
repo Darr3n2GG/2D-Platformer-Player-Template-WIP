@@ -9,7 +9,7 @@ var movement_enabled: bool = true
 var jump_enabled: bool = true
 var gravity_enabled: bool = true
 
-var is_jumping: bool
+#var is_jumping: bool
 
 
 func _physics_process(delta: float) -> void:

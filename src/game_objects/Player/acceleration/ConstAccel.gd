@@ -14,13 +14,13 @@ func _init(_t_accel = 0.0, _t_decel = 0.0, _t_turn = 0.0) -> void:
 	turn_time = _t_turn
 
 func apply_acceleration(player: Player, direction: float, delta: float) -> void:
-	set_t_accel(player.velocity.x, direction)
+	update_t_accel(player.velocity.x, direction)
 	var ticks := t_accel / delta
 	
 	var acceleration = player.max_speed * (1 / ticks)
 	player.velocity.x = move_toward(player.velocity.x, player.max_speed * direction, acceleration)
 	
-func set_t_accel(velocity_x: float, direction: float) -> void:
+func update_t_accel(velocity_x: float, direction: float) -> void:
 	if just_pressed() or just_released():
 		var is_turning = sign(velocity_x) != sign(direction) and velocity_x != 0.0
 		if direction == 0.0:
